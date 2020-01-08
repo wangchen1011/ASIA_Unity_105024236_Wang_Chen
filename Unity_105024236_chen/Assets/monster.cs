@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 
 public class monster : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class monster : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         print(other.name);
-        if (other.name == "rock" && ani.GetCurrentAnimatorStateInfo(0).IsName("accatk"))
+        if (other.name == "rock" && ani.GetCurrentAnimatorStateInfo(0).IsName("attack"))
         {
             Physics.IgnoreCollision(other, GetComponent<Collider>());
             other.GetComponent<HingeJoint>().connectedBody = rigCatch;
@@ -41,7 +41,7 @@ public class monster : MonoBehaviour
     {
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("attack")) return;
         float v = Input.GetAxis("Vertical");
-        rig.AddForce(tran.forward * speed * v * Time.deltaTime);
+        rig.AddForce(tran.forward * speed * v );
         ani.SetBool("walk", v != 0);
     }
     private void Attack()
